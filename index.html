@@ -10,33 +10,68 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <style>
+        #randList {
+            border: 1px solid black;
+            margin-bottom: 50px;
+            background-color: honeydew;
+        }
+        #content{
+            border: 3px solid hotpink;
+            background-color: yellow;
+        }
+        .title{
+            background-color: honeydew;
+            border: 2px solid black;
+        }
+        h2{
+            background-color: honeydew;
+            border: 2px solid black;
+        }
+        strong {
+            font-size: 50px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="main">
-        <div class="title">
-            <h1>Random-Result</h1>
-        </div>
-        <div>
-            <input type="text" id="inputValue" onkeyup="enterkey()">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" id="btn-add" onclick="output()">ADD</button>
-                <button type='button' class="btn btn-danger"
-                    onclick="document.getElementById('add_list').innerHTML=''">Clear</button>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <div class="title">
+                    <h1>랜덤 Project</h1>
+                </div>
+                <div style="margin-bottom: 50px;margin-top: 20px;">
+                    <input type="text" id="inputValue" onkeyup="enterkey()">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary" id="btn-add" onclick="output()">추가</button>
+                        <button type='button' class="btn btn-danger"
+                            onclick="document.getElementById('add_list').innerHTML=''">목록삭제</button>
+                        <button type="button" class="btn btn-success" id="btn-random"
+                            onclick="rand_go()">돌려돌려돌림판</button>
+                            
+                           
+                    </div>
+
+                </div>
             </div>
 
+            
+            <div id="result" class="col">
+                <h2>결과</h2>
+                 <div id="content"></div>
+             </div>
         </div>
-        <h3>List</h3>
-        <ul class="list-group">
-            <div id="add_list"></div>
-        </ul>
-        <br>
-        <button type="button" class="btn btn-primary" id="btn-random" onclick="rand_go()">Random</button>
-        <div id="result">
-            <div id="content"></div>
+        <div clas="row">
+        <div class="col" id="randList">
+            <h3 style="font-weight: bold;">목록</h3>
+            <ul class="list-group">
+                <div id="add_list"></div>
+            </ul>
+            <br>
+
         </div>
-
-
+    </div>
     </div>
     <script>
         var arr = [];
@@ -44,10 +79,9 @@
             var inputId = $('#inputValue').val();
             // document.querySelector('#add_list').insertAdjacentHTML('beforeend',document.getElementById('inputValue').value);
             if (inputId !== '') {
-                $('#add_list').append("<li class='list-group-item'>" + inputId + "</li>");
                 arr.push(inputId);
-                document.querySelector('#inputValue').value = "";
-            }
+                $('#add_list').append("<li class='list-group-item'>" + inputId + "</li>");
+                document.querySelector('#inputValue').value = "";}
         };
         function enterkey() {
             if (window.event.keyCode == 13) {
@@ -59,7 +93,7 @@
             document.getElementById('content').innerHTML = "";
             var i = Math.floor(arr.length * Math.random());
             alert('RESULT: ' + arr[i])
-            $('#content').append('RESULT: ' + arr[i]);
+            $('#content').append("<strong>"+arr[i]+"</strong>");
         }
 
     </script>

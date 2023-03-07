@@ -11,25 +11,34 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
         integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <style>
+        #inputValue{
+            width: 50%;
+        }
         #randList {
             border: 1px solid black;
             margin-bottom: 50px;
-            background-color: honeydew;
+            background-color: rgb(240, 255, 239);
+           
         }
         #content{
-            border: 3px solid hotpink;
-            background-color: yellow;
+            border: 3px solid rgb(126, 169, 88);
+            background-color: rgb(255, 255, 209);
         }
         .title{
             background-color: honeydew;
             border: 2px solid black;
         }
         h2{
-            background-color: honeydew;
+            background-color: rgb(221, 252, 200);
             border: 2px solid black;
+           
         }
         strong {
             font-size: 50px;
+        }
+        #btn-random{
+            width:20%;
+            height: 50px;
         }
     </style>
 </head>
@@ -38,32 +47,34 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <div class="title">
-                    <h1>랜덤 Project</h1>
-                </div>
+              
                 <div style="margin-bottom: 50px;margin-top: 20px;">
                     <input type="text" id="inputValue" onkeyup="enterkey()">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary" id="btn-add" onclick="output()">추가</button>
-                        <button type='button' class="btn btn-danger"
+                        <button type='button' class="btn btn-success"
                             onclick="document.getElementById('add_list').innerHTML=''">목록삭제</button>
-                        <button type="button" class="btn btn-success" id="btn-random"
-                            onclick="rand_go()">돌려돌려돌림판</button>
+                       
                             
                            
                     </div>
-
+                    <br><br>
+                    <button type="button" class="btn btn-danger" id="btn-random"
+                    onclick="rand_go()">돌돌이</button>
                 </div>
             </div>
 
-            
+            <div class="row">
             <div id="result" class="col">
-                <h2>결과</h2>
-                 <div id="content"></div>
+                
+                 <div id="content" style="
+                 margin-bottom: 20px;
+             "></div>
+             </div>
              </div>
         </div>
-        <div clas="row">
-        <div class="col" id="randList">
+        <div class="row">
+        <div class='col-12' id="randList">
             <h3 style="font-weight: bold;">목록</h3>
             <ul class="list-group">
                 <div id="add_list"></div>
@@ -93,7 +104,7 @@
             document.getElementById('content').innerHTML = "";
             var i = Math.floor(arr.length * Math.random());
             alert('RESULT: ' + arr[i])
-            $('#content').append("<strong>"+arr[i]+"</strong>");
+            $('#content').append("<strong>결과: "+arr[i]+"</strong>");
         }
 
     </script>

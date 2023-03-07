@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="title">
+            <h1>Random-Result</h1>
+        </div>
+        <div>
+            <input type="text" id="inputValue" onkeyup="enterkey()">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" id="btn-add" onclick="output()">ADD</button>
+                <button type='button' class="btn btn-danger"
+                    onclick="document.getElementById('add_list').innerHTML=''">Clear</button>
+            </div>
+
+        </div>
+        <h3>List</h3>
+        <ul class="list-group">
+            <div id="add_list"></div>
+        </ul>
+        <br>
+        <button type="button" class="btn btn-primary" id="btn-random" onclick="rand_go()">Random</button>
+        <div id="result">
+            <div id="content"></div>
+        </div>
+
+
+    </div>
+    <script>
+        var arr = [];
+        function output() {
+            var inputId = $('#inputValue').val();
+            // document.querySelector('#add_list').insertAdjacentHTML('beforeend',document.getElementById('inputValue').value);
+            if (inputId !== '') {
+                $('#add_list').append("<li class='list-group-item'>" + inputId + "</li>");
+                arr.push(inputId);
+                document.querySelector('#inputValue').value = "";
+            }
+        };
+        function enterkey() {
+            if (window.event.keyCode == 13) {
+                // 엔터키가 눌렸을 때
+                output();
+            }
+        }
+        function rand_go() {
+            document.getElementById('content').innerHTML = "";
+            var i = Math.floor(arr.length * Math.random());
+            alert('RESULT: ' + arr[i])
+            $('#content').append('RESULT: ' + arr[i]);
+        }
+
+    </script>
+
+</body>
+
+</html>
